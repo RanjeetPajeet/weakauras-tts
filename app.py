@@ -21,6 +21,13 @@ st.markdown(body=\
     </style> """, unsafe_allow_html=True
 )
 
+def hide_footer():
+    st.markdown(body=\
+        """ <style>
+        footer {visibility:hidden}
+        </style> """, unsafe_allow_html=True
+    )
+
 
 def get_mp3(phrase: str, speaker: str, modify: bool = True) -> bytes:
     headers = {
@@ -53,6 +60,8 @@ def get_mp3(phrase: str, speaker: str, modify: bool = True) -> bytes:
     return response.content
 
 
+hide_footer()
+
 st.title("Weakauras TTS")
 st.markdown("---")
 
@@ -76,5 +85,6 @@ preview = st.empty()
 
 
 if submit:
+    hide_footer()
     mp3 = get_mp3(PHRASE, SPEAKER, modify)
     preview.audio(mp3, format="audio/mp3")
