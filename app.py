@@ -9,6 +9,8 @@ import requests
 import streamlit as st
 from io import BytesIO
 from pydub import AudioSegment
+AudioSegment.converter = "ffmpeg.exe"
+AudioSegment.ffmpeg = "ffmpeg.exe"
 
 st.set_page_config(
     layout     = "centered",
